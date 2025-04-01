@@ -1,0 +1,10 @@
+[project]
+dependencies = []
+description = "apt package migration to brew(linux) package manager"
+name = "package-migration-tools"
+readme = "README.md"
+requires-python = ">=3.13"
+version = "0.1.0"
+
+[dependency-groups]
+dev = []
