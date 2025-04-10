@@ -1,5 +1,7 @@
 [project]
-dependencies = []
+dependencies = [
+    "pydantic>=2.11.3",
+]
 description = "apt package migration to brew(linux) package manager"
 name = "package-migration-tools"
 readme = "README.md"
