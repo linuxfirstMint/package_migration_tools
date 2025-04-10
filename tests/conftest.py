@@ -69,3 +69,54 @@ def input_package_data() -> dict[str, Any]:
         },
         "brew": {"package": {"git": {"version": "2.48.1", "dependencies": []}}},
     }
+
+
+@pytest.fixture
+def input_apt_mock_data() -> str:
+    """APT package list as raw dpkg-query output."""
+    return (
+        "Package=curl,Version=7.81.0-1ubuntu1.20,Depends=libc6 (>= 2.34), "
+        "libcurl4 (= 7.81.0-1ubuntu1.20), zlib1g (>= 1:1.1.4)\n"
+        "Package=git,Version=1:2.34.1-1ubuntu1.12,Depends=libc6 (>= 2.34), "
+        "libcurl3-gnutls (>= 7.56.1), libexpat1 (>= 2.0.1), libpcre2-8-0 (>= 10.34), "
+        "zlib1g (>= 1:1.2.0), perl, liberror-perl, git-man (>> 1:2.34.1), "
+        "git-man (<< 1:2.34.1-.)\n"
+        "Package=wget,Version=1.21.2-2ubuntu1.1,Depends=libc6 (>= 2.34), "
+        "libidn2-0 (>= 0.6), libpcre2-8-0 (>= 10.22), libpsl5 (>= 0.16.0), "
+        "libssl3 (>= 3.0.0~~alpha1), libuuid1 (>= 2.16), zlib1g (>= 1:1.1.4)"
+    )
+
+
+@pytest.fixture
+def input_brew_mock_data() -> dict:
+    """Mock data simulating `brew info --json=v2 <pkg>` format."""
+    return {
+        "formulae": [
+            {
+                "name": "git",
+                "full_name": "git",
+                "tap": "homebrew/core",
+                "versioned_formulae": [],
+                "desc": "Distributed revision control system",
+                "license": "GPL-2.0-only",
+                "homepage": "https://git-scm.com",
+                "versions": {"stable": "2.48.1", "head": "HEAD", "bottle": "true"},
+                "urls": {},
+                "revision": 0,
+                "dependencies": ["gettext", "pcre2", "openssl@3"],
+                "installed": [],
+                "bottle": {
+                    "stable": {
+                        "files": {
+                            "x86_64_linux": {
+                                "cellar": "/home/linuxbrew/.linuxbrew/Cellar",
+                                "url": "https://ghcr.io/v2/homebrew/core/git/blobs/sha256:example",
+                                "sha256": "examplehash",
+                            }
+                        }
+                    }
+                },
+            }
+        ],
+        "casks": [],
+    }
