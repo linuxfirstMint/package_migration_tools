@@ -27,7 +27,7 @@ jobs:
           uv v
 
       - name: Install dependencies
-        run: uv pip install --system
+        run: uv pip install --group dev
 
       - name: Run pytest
         run: uv run pytest
