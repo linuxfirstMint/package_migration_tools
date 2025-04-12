@@ -60,6 +60,28 @@
 
 ---
 
+## 🧪 CI テストワークフロー
+
+このプロジェクトでは、GitHub Actions を利用した CI テスト環境を構築しています。
+開発ブランチや Pull Request に対して、Python テストが自動的に実行されます。
+
+### ✅ ワークフロー定義
+
+- ファイル: `.github/workflows/test.yml`
+- 実行タイミング:
+  - push / pull_request / 手動（workflow_dispatch）
+- テスト内容:
+  - Python 3.13 にて `uv pip install --group dev` を実行し、依存パッケージをインストール
+  - `uv run pytest` によりテストスイートを実行
+
+### 🔧 今後の拡張予定
+
+- Bats（Bash Automated Testing System）による CLI スクリプトの自動テスト（[Issue #5](https://github.com/linuxfirstMint/package_migration_tools/issues/5)）
+- キャッシュの導入による高速化
+- テスト結果の通知やブロッカー設定の追加
+
+---
+
 ## 🔺 備考
 
 - 運用ガイドは階段的に最適化します
