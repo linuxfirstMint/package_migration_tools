@@ -2,8 +2,24 @@ import { defineConfig } from "cz-git";
 
 export default defineConfig({
   rules: {
-    // コミットメッセージのルール設定
-    // @see: https://commitlint.js.org/#/reference-rules
+    "type-enum": [
+      2,
+      "always",
+      [
+        "feat",
+        "fix",
+        "docs",
+        "style",
+        "refactor",
+        "test",
+        "build",
+        "ci",
+        "config",
+        "tool",
+        "infra",
+        "revert",
+      ],
+    ],
   },
   prompt: {
     alias: {
@@ -26,51 +42,56 @@ export default defineConfig({
       confirmCommit: "上記のコミット内容で進めていいですか？",
     },
     types: [
-      { value: "feat", name: "feat:     ✨  新機能追加", emoji: "✨" },
+      { value: "feat", name: "feat:     ✨  新機能の追加", emoji: "✨" },
       { value: "fix", name: "fix:      🐛  バグ修正", emoji: "🐛" },
       {
         value: "docs",
-        name: "docs:     📝  ドキュメントのみの変更",
+        name: "docs:     📝  ドキュメント整備（README やテンプレートなど）",
         emoji: "📝",
       },
       {
         value: "style",
-        name: "style:    💄  コードの意味に影響しない変更",
+        name: "style:    💄  コード整形・エディタ設定など（意味に影響なし）",
         emoji: "💄",
       },
       {
         value: "refactor",
-        name: "refactor: ♻️   機能の追加やバグ修正以外のコード変更",
+        name: "refactor: ♻️   機能追加・バグ修正を含まないリファクタリング",
         emoji: "♻️",
       },
       {
-        value: "perf",
-        name: "perf:     ⚡️  パフォーマンス改善",
-        emoji: "⚡️",
-      },
-      {
         value: "test",
-        name: "test:     ✅  テストの追加または既存テストの修正",
+        name: "test:     ✅  テスト追加や修正（unit, integration, bats等）",
         emoji: "✅",
       },
       {
         value: "build",
-        name: "build:    📦️   ビルドシステムまたは外部依存関係の変更",
+        name: "build:    📦️  ビルド設定や依存パッケージ関連の変更",
         emoji: "📦️",
       },
       {
         value: "ci",
-        name: "ci:       🎡  CI構成ファイルとスクリプトの変更",
+        name: "ci:       🎡  GitHub Actions 等 CI構成",
         emoji: "🎡",
       },
       {
-        value: "chore",
-        name: "chore:    🔨  ソースやテストファイル以外の変更",
-        emoji: "🔨",
+        value: "config",
+        name: "config:   ⚙️   commitlint, ruff, editorconfig などの設定変更",
+        emoji: "⚙️",
+      },
+      {
+        value: "tool",
+        name: "tool:     🛠  補助スクリプトや開発ツールの追加・整備",
+        emoji: "🛠",
+      },
+      {
+        value: "infra",
+        name: "infra:    🧱  GitHub Projects や環境構築スクリプト関連",
+        emoji: "🧱",
       },
       {
         value: "revert",
-        name: "revert:   ⏪️  前のコミットの取り消し",
+        name: "revert:   ⏪️  過去のコミットの取り消し",
         emoji: "⏪️",
       },
     ],
