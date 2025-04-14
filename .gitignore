@@ -8,3 +8,26 @@ wheels/
 .coverage
 # Virtual environments
 .venv
+.venv/
+
+# 機密ファイル
+.env
+.env.*
+secrets.*
+secret.*
+config.json
+*.token
+
+# セキュリティ関連
+*.key
+*.pem
+*.crt
+
+# データベースファイル
+*.sqlite3
+*.db
+
+# ビルド/キャッシュ/ログ系
+*.log
+*.lock
+*.pyc
